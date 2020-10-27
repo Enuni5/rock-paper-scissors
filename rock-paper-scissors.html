@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+</head>
+
+<body>
+    <script>
+
+        function game() {
+            let playerWins = 0;
+            let computerWins = 0;
+            for (i = 0; i <= 4; i++) {
+                let round = singleRound(playerPlay(), computerPlay());
+                if (round == "Player wins") {
+                    console.log("Player won this round");
+                    playerWins++;
+                } else if (round == "Computer wins") {
+                    console.log("Computer won this round");
+                    computerWins++;
+                } else {
+                    console.log("Round is a draw");
+                }
+            }
+            if (playerWins < computerWins) {
+                console.log("You lose");
+            } else if (playerWins > computerWins) {
+                console.log("You win");
+            } else console.log("It's a draw");
+        }
+
+        function singleRound(playerSelection, computerSelection) {
+            let result;
+            if (playerSelection == "rock" && computerSelection == "scissors" ||
+                playerSelection == "paper" && computerSelection == "rock" ||
+                playerSelection == "scissors" && computerSelection == "paper") {
+                alert(`You win! ${playerSelection} beats ${computerSelection}`)
+                return result = "Player wins";
+            } else if (playerSelection == "scissors" && computerSelection == "rock" ||
+                playerSelection == "rock" && computerSelection == "paper" ||
+                playerSelection == "paper" && computerSelection == "scissors") {
+                alert(`You lose! ${computerSelection} beats ${playerSelection}`)
+                return result = "Computer wins"
+            } else {
+                alert("It's a draw");
+                return result = "It's a draw";
+            }
+        }
+
+        function playerPlay() {
+            let userInput = prompt("Choose your move:");
+            userInput = userInput.toLowerCase();
+            while ((userInput != "rock") && (userInput != "paper") && (userInput != "scissors")) {
+                userInput = prompt("Invalid move. Choose your move:");
+            }
+            return userInput;
+        }
+
+        function computerPlay() {
+            let playChosen = random();
+            if (playChosen === 1) {
+                playChosen = "rock";
+            }
+            else if (playChosen === 2) {
+                playChosen = "paper";
+            }
+            else {
+                playChosen = "scissors";
+            };
+            return playChosen;
+        }
+
+
+        function random() {
+            let random = Math.floor((Math.random() * 3) + 1);
+            return random;
+        }
+        console.log(random);
+
+    </script>
+</body>
+
+</html>
